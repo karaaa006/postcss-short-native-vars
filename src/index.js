@@ -1,9 +1,16 @@
-import postcss from 'postcss';
+import postcss from "postcss";
+import { replacer } from "./utils/replacer";
 
-export default postcss.plugin('postcss-short-native-vars', opts => {
-	console.log({ opts }); // eslint-disable-line no-console
+export default postcss.plugin("postcss-postcss-test-plugin", () => {
+	return (root) => {
+		root.nodes.forEach((node) => {
+			node.nodes.forEach((node) => {
+				if (node.prop.startsWith("$")) {
+					node.prop = replacer(node.prop, true);
+				}
 
-	return (root, result) => {
-		console.log({ root, result }); // eslint-disable-line no-console
+				if (node.value.includes("$")) node.value = replacer(node.value);
+			});
+		});
 	};
 });
