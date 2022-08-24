@@ -4,7 +4,7 @@
 
 	--test-color: #000;
 	--test-3: orange;
-	--var: 12px;
+	--native-var: 12px;
 }
 
 .test {
@@ -12,6 +12,7 @@
 	width: calc(var(--test-size) * 2 * var(--test-2-size));
 	color: var(--test-color);
 	height: var(--value);
+	font-size: var(--native-var);
 }
 
 .test-2 {

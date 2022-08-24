@@ -4,7 +4,7 @@
 
 	$test-color: #000;
 	$test-3: orange;
-	--var: 12px;
+	--native-var: 12px;
 }
 
 .test {
@@ -12,6 +12,7 @@
 	width: calc($test-size * 2 * $test-2-size);
 	color: $test-color;
 	height: $value;
+	font-size: var(--native-var);
 }
 
 .test-2 {

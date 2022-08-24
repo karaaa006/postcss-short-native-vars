@@ -7,57 +7,53 @@
 [PostCSS short-native-vars] lets you ... in CSS.
 
 ```pcss
-.example { 
-  :root {
-  	$test-size: 20px;
-  	$test-2-size: 10px;
+:root {
+	$test-size: 20px;
+	$test-2-size: 10px;
+	$test-color: #000;
+	$test-3: orange;
+	--var: 12px;
+}
 
-  	$test-color: #000;
-  	$test-3: orange;
-  	--var: 12px;
-  }
+.test {
+	$value: 123px;
+	width: calc($test-size * 2 * $test-2-size);
+	color: $test-color;
+	height: $value;
+}
 
-  .test {
-  	$value: 123px;
-  	width: calc($test-size * 2 * $test-2-size);
-  	color: $test-color;
-  	height: $value;
-  }
-
-  .test-2 {
-  	width: $test-size;
-  	height: $test-size;
-  	color: red;
-  	background-color: $orange;
-  }
- }
+.test-2 {
+	width: $test-size;
+	height: $test-size;
+	color: red;
+	background-color: $orange;
+}
+ 
 
 /* becomes */
+ 
+:root {
+	--test-size: 20px;
+	--test-2-size: 10px;
+	--test-color: #000;
+	--test-3: orange;
+	--var: 12px;
+}
 
-.example { 
-  :root {
-  	--test-size: 20px;
-  	--test-2-size: 10px;
+.test {
+	--value: 123px;
+	width: calc(var(--test-size) * 2 * var(--test-2-size));
+	color: var(--test-color);
+	height: var(--value);
+}
 
-  	--test-color: #000;
-  	--test-3: orange;
-  	--var: 12px;
-  }
-
-  .test {
-  	--value: 123px;
-  	width: calc(var(--test-size) * 2 * var(--test-2-size));
-  	color: var(--test-color);
-  	height: var(--value);
-  }
-
-  .test-2 {
-  	width: var(--test-size);
-  	height: var(--test-size);
-  	color: red;
-  	background-color: var(--orange);
-  }
- }
+.test-2 {
+	width: var(--test-size);
+	height: var(--test-size);
+	color: red;
+	background-color: var(--orange);
+}
+ 
 ```
 
 ## Usage
